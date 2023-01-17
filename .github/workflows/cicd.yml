@@ -70,8 +70,8 @@ jobs:
           git --version
           git config user.name "chinathaip"
           git config user.email "cartoonabe@gmail.com"
-          sed -i -E "s/ghcr.io\/chinathaip\/testargocd.*$/ghcr.io\/chinathaip\/testargocd:${GITHUB_SHA}/" kube-gitops/deployment.yml
-          git add kube-gitops/deployment.yml
+          sed -i -E "s/ghcr.io\/chinathaip\/testargocd.*$/ghcr.io\/chinathaip\/testargocd:${GITHUB_SHA}/" k8s/deployment.yml
+          git add k8s/deployment.yml
           git commit -m "🤖 change docker image version to ${GITHUB_SHA}"
       # line 87: 
       # open the kube-gitios/deployment.yml file in the 'devops-argocd' repo(tutorial), 
