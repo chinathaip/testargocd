@@ -1,0 +1,36 @@
+version: '3.2'
+
+networks:
+  integration-test-example:
+
+
+services:
+  it_tests:
+    build:
+      #build the docker compose image
+      context: .
+      dockerfile: ./Dockerfile.test #using the script from Dockerfile.test 
+      #Dockerfile.test basically runs all the test with "integration" tag
+    volumes:
+      - $PWD:/go/src/target
+    depends_on:
+      #set the this service(it_tests) to run after 'db' (the service below)
+      - db
+    networks:
+      #set the network so that each service can connect to each other
+      - integration-test-example
+  db:
+    #just set up db for testing
+    image: postgres:12.12
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: go-example-db
+    restart: on-failure
+    volumes:
+      #set the next action after the postgres database is up and running
+      - ./db:/docker-entrypoint-initdb.d/
+      #in this case it runs the script withint the package 'db', which is 01-init.sql
+    networks:
+      #set the network so that 'it_tests' can connect to this db
+      - integration-test-example
