@@ -53,7 +53,7 @@ jobs:
 
 
   # ==============
-  # CD task
+  # CD task - access the repo that has kubernetes config files, and change the pods' container image
   # ==============
   gitops-versioning:
     runs-on: ubuntu-latest
@@ -62,7 +62,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          repository: chinathaip/testargocd
+          repository: chinathaip/deployargo
           persist-credentials: false
           fetch-depth: 0
       - name: change image tag
@@ -81,5 +81,5 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT }}
-          repository: chinathaip/testargocd
+          repository: chinathaip/deplyargo
           branch: main
