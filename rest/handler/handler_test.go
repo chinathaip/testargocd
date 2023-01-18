@@ -29,7 +29,7 @@ func TestGetGreeting(t *testing.T) {
 	// Assertions
 	if assert.NoError(t, err) {
 		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Equal(t, "Yay it works now!!!", rec.Body.String())
+		assert.Equal(t, "Greetings!!", rec.Body.String())
 	}
 }
 
