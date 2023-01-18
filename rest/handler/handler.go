@@ -17,7 +17,7 @@ func NewApplication(db *sql.DB) *handler {
 }
 
 func (h *handler) Greeting(c echo.Context) error {
-	return c.String(http.StatusOK, "Greetings!!")
+	return c.String(http.StatusOK, "Hello world!")
 }
 
 type NewsArticle struct {
