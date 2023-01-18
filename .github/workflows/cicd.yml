@@ -81,5 +81,5 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT }}
-          repository: chinathaip/deplyargo
+          repository: chinathaip/deployargo
           branch: main
